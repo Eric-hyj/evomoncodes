@@ -15,7 +15,7 @@ const withMDX = createMDX({
 const nextConfig = {
   output: "standalone",
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  allowedDevOrigins: ["*.preview.same-app.com"],
+  allowedDevOrigins: ["*.preview.same-app.com", "127.0.0.1:3018", "localhost:3018"],
   images: {
     unoptimized: true,
     remotePatterns: [

@@ -11,10 +11,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const LOCALE_LABELS: Record<Locale, string> = {
+const LOCALE_LABELS: Partial<Record<Locale, string>> = {
   en: "English",
-  ja: "日本語",
+  pt: "Português",
+  es: "Español",
+  ru: "Русский",
 };
+
+function getLocaleLabel(locale: Locale) {
+  return LOCALE_LABELS[locale] || locale.toUpperCase();
+}
 
 /**
  * 语言切换器（下拉菜单版）：点击 Globe 图标展开所有语言列表
@@ -54,7 +60,7 @@ export function LanguageSwitcher({ locale }: { locale: string }) {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground">
           <Globe className="h-4 w-4" />
-          <span>{LOCALE_LABELS[locale as Locale]}</span>
+          <span>{getLocaleLabel(locale as Locale)}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[140px]">
@@ -64,7 +70,7 @@ export function LanguageSwitcher({ locale }: { locale: string }) {
             onClick={() => handleSwitch(loc)}
             className="flex items-center justify-between gap-3"
           >
-            <span>{LOCALE_LABELS[loc]}</span>
+            <span>{getLocaleLabel(loc)}</span>
             {loc === (locale as Locale) && <Check className="h-4 w-4 text-[hsl(var(--nav-theme))]" />}
           </DropdownMenuItem>
         ))}

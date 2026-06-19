@@ -9,14 +9,28 @@ import { Card } from "@/components/ui/card";
 import { TrailerButton, localizeHref } from "@/components/site";
 import type { ContentItem } from "@/lib/content";
 import en from "@/locales/en.json";
+import { OFFICIAL_TRAILER_VIDEO_ID, resolveConfiguredHref } from "@/config/site";
 
 type Home = typeof en.home;
 
 const icons: LucideIcon[] = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swords, MapIcon, Users, Trophy, Skull, Zap, CircleHelp, ScrollText];
 
+function humanizeSlug(slug: string) {
+  return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
 
-export default function HomePageClient({ home, locale, articles, recentArticles }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[] }) {
-  const YOUTUBE_VIDEO_ID = "zpvGp5kOg18";
+export default function HomePageClient({ home, locale, articles, recentArticles, availableHrefs }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[]; availableHrefs: string[] }) {
+  const popularGroups = Array.from(new Set(articles.map((article) => article.contentType))).slice(0, 4);
+  const availableHrefSet = new Set(availableHrefs);
+  const canLinkTo = (href?: string) => {
+    if (!href) return false;
+    const resolvedHref = resolveConfiguredHref(href);
+    return resolvedHref.startsWith("http") || availableHrefSet.has(resolvedHref);
+  };
+  const getHref = (href: string) => {
+    const resolvedHref = resolveConfiguredHref(href);
+    return resolvedHref.startsWith("http") ? resolvedHref : localizeHref(resolvedHref, locale);
+  };
 
   return (
     <div className="space-y-16">
@@ -27,7 +41,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
           <span className="mt-2 inline-flex items-center rounded-md border border-[hsl(var(--nav-theme))] bg-[hsl(var(--nav-theme))] px-2.5 py-0.5 text-xs font-semibold text-primary-foreground sm:-translate-y-1.5">{home.hero.eyebrow}</span>
         </div>
         <div className="mx-auto mt-5 max-w-2xl">
-          <TrailerButton videoId={YOUTUBE_VIDEO_ID} />
+          <TrailerButton videoId={OFFICIAL_TRAILER_VIDEO_ID} alt={home.hero.videoAlt} label={home.hero.videoLabel} closeLabel={home.hero.videoCloseLabel} openLabel={home.hero.videoOpenLabel} />
         </div>
         <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">{home.hero.description}</p>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">{home.hero.stats.map((stat) => <span key={stat} className="inline-flex items-center gap-1 rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">{stat}</span>)}</div>
@@ -54,7 +68,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
             ))}
           </div>
           <Button asChild className="mt-5 w-full" variant="outline">
-            <Link href={localizeHref("/codes", locale)}>{home.updates.browse}</Link>
+            <Link href={getHref(home.updates.browseHref)}>{home.updates.browse}</Link>
           </Button>
         </Card>
 
@@ -82,8 +96,8 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
               <p className="text-sm font-semibold text-[hsl(var(--nav-theme))]">{home.popular.eyebrow}</p>
               <h2 className="mt-1 text-3xl font-bold tracking-tight text-foreground">{home.popular.title}</h2>
             </div>
-            {home.popular.quickLinks && home.popular.quickLinks.length > 0 && (
-              <div className="hidden gap-2 sm:flex">{home.popular.quickLinks.map((link) => <Badge key={link} variant="outline" className="border-border px-3 py-1 text-muted-foreground">{link}</Badge>)}</div>
+            {popularGroups.length > 0 && (
+              <div className="hidden gap-2 sm:flex">{popularGroups.map((group) => <Badge key={group} variant="outline" className="border-border px-3 py-1 text-muted-foreground">{humanizeSlug(group)}</Badge>)}</div>
             )}
           </div>
           <div className="relative mt-6 overflow-hidden">
@@ -111,7 +125,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
       )}
 
       {/* About Game (curated, stays in JSON) */}
-      <section className="grid gap-8 rounded-3xl border border-border bg-card/60 p-6 lg:grid-cols-[1.1fr_0.9fr]"><div><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.aboutGame.title}</h2>{home.aboutGame.paragraphs.map((p) => <p key={p} className="mt-5 leading-8 text-muted-foreground">{p}</p>)}<Button asChild className="mt-6"><Link href={localizeHref("/guide/vv-ultimatum-beginner-guide-2026", locale)}>{home.aboutGame.cta}</Link></Button></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2">{home.aboutGame.stats.map((stat) => <div key={stat.label} className="rounded-2xl border border-border bg-background p-4"><p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{stat.label}</p><p className="mt-2 text-xl font-bold text-foreground">{stat.value}</p></div>)}</div></section>
+      <section className="grid gap-8 rounded-3xl border border-border bg-card/60 p-6 lg:grid-cols-[1.1fr_0.9fr]"><div><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.aboutGame.title}</h2>{home.aboutGame.paragraphs.map((p) => <p key={p} className="mt-5 leading-8 text-muted-foreground">{p}</p>)}{canLinkTo(home.aboutGame.ctaHref) && <Button asChild className="mt-6"><Link href={getHref(home.aboutGame.ctaHref)}>{home.aboutGame.cta}</Link></Button>}</div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2">{home.aboutGame.stats.map((stat) => <div key={stat.label} className="rounded-2xl border border-border bg-background p-4"><p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{stat.label}</p><p className="mt-2 text-xl font-bold text-foreground">{stat.value}</p></div>)}</div></section>
 
       {/* 8 Module Sections (full-width stacked, matching reference site style) */}
       {home.explore.modules && home.explore.modules.length > 0 && (
@@ -121,14 +135,14 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
 
           {/* Quick nav pills */}
           <div className="mt-5 flex flex-wrap gap-2">
-            {home.explore.modules.map((mod) => (
-              <Link
-                key={mod.order}
-                href={localizeHref(mod.href, locale)}
-                className="rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-sm text-muted-foreground transition hover:border-[hsl(var(--nav-theme-light))] hover:text-[hsl(var(--nav-theme))]"
-              >
+            {home.explore.modules.map((mod) => canLinkTo(mod.href) ? (
+              <Link key={mod.order} href={getHref(mod.href)} className="rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-sm text-muted-foreground transition hover:border-[hsl(var(--nav-theme-light))] hover:text-[hsl(var(--nav-theme))]">
                 {mod.name}
               </Link>
+            ) : (
+              <span key={mod.order} className="rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-sm text-muted-foreground">
+                {mod.name}
+              </span>
             ))}
           </div>
 
@@ -209,12 +223,11 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
                     </div>
                   )}
 
-                  <Link
-                    href={localizeHref(mod.href, locale)}
-                    className="mt-5 inline-flex items-center text-sm font-semibold text-[hsl(var(--nav-theme))] hover:underline"
-                  >
-                    Read Full Guide <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
+                  {canLinkTo(mod.href) && (
+                    <Link href={getHref(mod.href)} className="mt-5 inline-flex items-center text-sm font-semibold text-[hsl(var(--nav-theme))] hover:underline">
+                      {home.explore.readFullGuide} <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
@@ -226,7 +239,7 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
       <section><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.faq.title}</h2><p className="mt-2 text-muted-foreground">{home.faq.description}</p><Accordion type="single" collapsible className="mt-6 rounded-2xl border border-border bg-card/70 px-5">{home.faq.items.map((item, index) => <AccordionItem key={item.question} value={`item-${index}`}><AccordionTrigger className="text-left text-foreground">{item.question}</AccordionTrigger><AccordionContent className="leading-7 text-muted-foreground">{item.answer}</AccordionContent></AccordionItem>)}</Accordion></section>
 
       {/* Final CTA (curated, stays in JSON) */}
-      <section className="rounded-3xl border border-border bg-gradient-to-br from-muted to-card p-8 text-center"><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.finalCta.title}</h2><p className="mx-auto mt-3 max-w-2xl text-muted-foreground">{home.finalCta.description}</p><div className="mt-6 flex flex-wrap justify-center gap-3"><Button asChild size="lg"><Link href={localizeHref("/guide/vv-ultimatum-beginner-guide-2026", locale)}>{home.finalCta.primary}<ArrowRight className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><Link href="https://www.roblox.com/games/6270290407/VV-ULTIMATUM">{home.finalCta.secondary}</Link></Button></div></section>
+      <section className="rounded-3xl border border-border bg-gradient-to-br from-muted to-card p-8 text-center"><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.finalCta.title}</h2><p className="mx-auto mt-3 max-w-2xl text-muted-foreground">{home.finalCta.description}</p><div className="mt-6 flex flex-wrap justify-center gap-3">{canLinkTo(home.finalCta.primaryHref) && <Button asChild size="lg"><Link href={getHref(home.finalCta.primaryHref)}>{home.finalCta.primary}<ArrowRight className="ml-2 h-4 w-4" /></Link></Button>}{canLinkTo(home.finalCta.secondaryHref) && <Button asChild size="lg" variant="outline"><Link href={getHref(home.finalCta.secondaryHref)}>{home.finalCta.secondary}</Link></Button>}</div></section>
     </div>
   );
 }

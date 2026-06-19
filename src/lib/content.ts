@@ -1,10 +1,7 @@
 import fs from "fs";
 import path from "path";
-import { CONTENT_TYPES as CONFIG_CONTENT_TYPES } from "@/config/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-
-// 从统一配置导入内容类型
-export const CONTENT_TYPES = CONFIG_CONTENT_TYPES;
+import { CONTENT_TYPES, NAVIGATION_CONFIG, type ContentType } from "@/config/navigation";
 
 /**
  * 将文件名转换为 URL-safe slug
@@ -83,6 +80,27 @@ export type ContentData = {
 
 const CONTENT_ROOT = path.join(process.cwd(), "content");
 
+function humanizeSlug(slug: string): string {
+  return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+export function getContentTypes(language: Locale = routing.defaultLocale): ContentType[] {
+  const localeDir = path.join(CONTENT_ROOT, language);
+  const fallbackDir = path.join(CONTENT_ROOT, routing.defaultLocale);
+
+  return CONTENT_TYPES.filter((contentType) => {
+    const localizedContentDir = path.join(localeDir, contentType);
+    const fallbackContentDir = path.join(fallbackDir, contentType);
+    return [localizedContentDir, fallbackContentDir].some((contentDir) =>
+      fs.existsSync(contentDir) && fs.statSync(contentDir).isDirectory(),
+    );
+  });
+}
+
+export function isContentType(contentType: string, language: Locale = routing.defaultLocale) {
+  return getContentTypes(language).includes(contentType as ContentType);
+}
+
 /**
  * 从 MDX 源文件中提取 ## 和 ### 标题
  */
@@ -138,25 +156,48 @@ function getSlugsFromDirectory(dir: string, basePath: string[] = []): string[][]
   return paths;
 }
 
+function getMergedSlugEntries(contentType: string, language: Locale) {
+  const localeDir = path.join(CONTENT_ROOT, language, contentType);
+  const fallbackDir = path.join(CONTENT_ROOT, routing.defaultLocale, contentType);
+  const entries = new Map<string, { segments: string[]; sourceLocale: Locale; sourceDir: string }>();
+
+  for (const segments of getSlugsFromDirectory(fallbackDir)) {
+    entries.set(segments.join("/"), {
+      segments,
+      sourceLocale: routing.defaultLocale,
+      sourceDir: fallbackDir,
+    });
+  }
+
+  for (const segments of getSlugsFromDirectory(localeDir)) {
+    entries.set(segments.join("/"), {
+      segments,
+      sourceLocale: language,
+      sourceDir: localeDir,
+    });
+  }
+
+  return [...entries.values()];
+}
+
 /**
  * 获取所有内容列表（支持递归读取嵌套目录）
  * 使用动态 import 获取 MDX 文件的 metadata
  */
 export async function getAllContent(contentType: string, language: Locale): Promise<ContentItem[]> {
-  const contentDir = path.join(CONTENT_ROOT, language, contentType);
-  const slugPaths = getSlugsFromDirectory(contentDir);
+  const slugEntries = getMergedSlugEntries(contentType, language);
 
   const items = await Promise.all(
-    slugPaths.map(async (segments) => {
+    slugEntries.map(async ({ segments, sourceLocale, sourceDir }) => {
       const slug = segments.join("/");
       try {
-        const realSlug = findFileBySlug(contentDir, slug) || slug;
-        const mod = await import(`../../content/${language}/${contentType}/${realSlug}.mdx`);
+        const realSlug = findFileBySlug(sourceDir, slug) || slug;
+        const mod = await import(`../../content/${sourceLocale}/${contentType}/${realSlug}.mdx`);
         return {
           slug,
           segments,
           contentType,
-          locale: language,
+          locale: sourceLocale,
           metadata: mod.metadata as ContentMetadata,
         } satisfies ContentItem;
       } catch {
@@ -235,77 +276,83 @@ export interface NavGroup {
   links: Array<{ label: string; href: string; badge?: string }>;
 }
 
-// 分组标题映射：slug → 人类可读标题（默认英文）
-const GROUP_TITLES: Record<string, string> = {
-  bosses: "Bosses",
-  races: "Races",
-  maps: "Maps & Areas",
-  skills: "Skills",
+// 目录 slug → 人类可读标题（主语言）
+export const GROUP_TITLES: Record<ContentType, string> = {
   codes: "Codes",
-  guide: "Getting Started",
-  "tier-list": "Tier Lists",
+  guide: "Guides",
+  creatures: "Creatures",
+  evolution: "Evolution",
+  islands: "Islands",
+  "type-chart": "Type Chart",
+  shiny: "Shiny",
+  community: "Community",
 };
 
-// 日文分组标题映射
-const GROUP_TITLES_JA: Record<string, string> = {
-  bosses: "ボス",
-  races: "種族",
-  maps: "マップ & エリア",
-  skills: "スキル",
-  codes: "コード",
-  guide: "初心者ガイド",
-  "tier-list": "Tier List",
+// 多语言标题映射。key 必须与 NAVIGATION_CONFIG 中的内容分类 key 一致。
+export const GROUP_TITLES_BY_LOCALE: Partial<Record<Locale, Record<ContentType, string>>> = {
+  es: {
+    codes: "Códigos",
+    guide: "Guías",
+    creatures: "Criaturas",
+    evolution: "Evolución",
+    islands: "Islas",
+    "type-chart": "Tabla de Tipos",
+    shiny: "Shiny",
+    community: "Comunidad",
+  },
+  pt: {
+    codes: "Códigos",
+    guide: "Guias",
+    creatures: "Criaturas",
+    evolution: "Evolução",
+    islands: "Ilhas",
+    "type-chart": "Tabela de Tipos",
+    shiny: "Shiny",
+    community: "Comunidade",
+  },
+  ru: {
+    codes: "Коды",
+    guide: "Гайды",
+    creatures: "Существа",
+    evolution: "Эволюция",
+    islands: "Острова",
+    "type-chart": "Таблица Типов",
+    shiny: "Шайни",
+    community: "Сообщество",
+  },
 };
 
-// locale → 分组标题映射
-const GROUP_TITLES_BY_LOCALE: Record<string, Record<string, string>> = {
-  ja: GROUP_TITLES_JA,
-};
-
-// locale → "Overview" 翻译
-const OVERVIEW_LABEL_BY_LOCALE: Record<string, string> = {
-  ja: "一覧",
-};
-
-// 分组排序顺序
-const GROUP_ORDER: string[] = [
-  "guide", "races", "bosses", "maps", "skills", "codes", "tier-list",
-];
+// 分组排序顺序，直接来自导航配置文件。
+export const GROUP_ORDER: ContentType[] = NAVIGATION_CONFIG
+  .filter((item) => item.isContentType)
+  .map((item) => item.key);
 
 /**
  * 动态生成 Wiki Navigation 分组
  * 扫描 content/<locale>/ 下的所有 MDX 文件，按子目录分组
  * 同时为列表页添加 Overview 入口
  */
-export function getDynamicNavigation(language: Locale = "en"): NavGroup[] {
+export function getDynamicNavigation(language: Locale = "en", labels: Record<string, string> = {}): NavGroup[] {
   const localeDir = path.join(CONTENT_ROOT, language);
   if (!fs.existsSync(localeDir)) return [];
 
-  const entries = fs.readdirSync(localeDir, { withFileTypes: true });
   const groups: NavGroup[] = [];
 
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-    const groupSlug = entry.name;
-    // 跳过不在 CONTENT_TYPES 中的目录，避免显示会 404 的导航链接
-    if (!CONTENT_TYPES.includes(groupSlug as typeof CONTENT_TYPES[number])) continue;
-    const groupDir = path.join(localeDir, groupSlug);
-    const slugPaths = getSlugsFromDirectory(groupDir);
-
-    if (slugPaths.length === 0) continue;
+  for (const groupSlug of getContentTypes(language)) {
+    const slugEntries = getMergedSlugEntries(groupSlug, language);
 
     const links: NavGroup["links"] = [];
     // 添加 Overview 入口（按 locale 翻译）
-    const overviewLabel = OVERVIEW_LABEL_BY_LOCALE[language] || "Overview";
+    const overviewLabel = labels.overview || "Overview";
     links.push({ label: overviewLabel, href: `/${groupSlug}` });
 
-    for (const segments of slugPaths) {
+    for (const { segments, sourceDir } of slugEntries) {
       const articleSlug = segments.join("/");
-      const mdxFilePath = findFileBySlug(groupDir, articleSlug);
+      const mdxFilePath = findFileBySlug(sourceDir, articleSlug);
       if (!mdxFilePath) continue;
 
-      const fullPath = path.join(groupDir, `${mdxFilePath}.mdx`);
-      let title = segments[segments.length - 1].replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+      const fullPath = path.join(sourceDir, `${mdxFilePath}.mdx`);
+      let title = humanizeSlug(segments[segments.length - 1]);
       let badge: string | undefined;
 
       try {
@@ -323,9 +370,11 @@ export function getDynamicNavigation(language: Locale = "en"): NavGroup[] {
       links.push({ label: title, href: `/${groupSlug}/${articleSlug}`, badge });
     }
 
-    // 优先使用 locale 特定标题，否则回退到英文默认
-    const localTitles = GROUP_TITLES_BY_LOCALE[language] || {};
-    const groupTitle = localTitles[groupSlug] || GROUP_TITLES[groupSlug] || groupSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    const groupTitle =
+      labels[groupSlug] ||
+      GROUP_TITLES_BY_LOCALE[language]?.[groupSlug as ContentType] ||
+      GROUP_TITLES[groupSlug as ContentType] ||
+      humanizeSlug(groupSlug);
 
     groups.push({
       title: groupTitle,
@@ -337,8 +386,8 @@ export function getDynamicNavigation(language: Locale = "en"): NavGroup[] {
 
   // 按 GROUP_ORDER 排序
   groups.sort((a, b) => {
-    const ai = GROUP_ORDER.indexOf(a.slug);
-    const bi = GROUP_ORDER.indexOf(b.slug);
+    const ai = GROUP_ORDER.indexOf(a.slug as ContentType);
+    const bi = GROUP_ORDER.indexOf(b.slug as ContentType);
     return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
   });
 
@@ -349,16 +398,12 @@ export function getDynamicNavigation(language: Locale = "en"): NavGroup[] {
  * 获取所有内容路径（用于 generateStaticParams）
  */
 export async function getAllContentPaths(language: Locale) {
-  const localeDir = path.join(CONTENT_ROOT, language);
-  if (!fs.existsSync(localeDir)) return [];
-
-  const entries = fs.readdirSync(localeDir, { withFileTypes: true });
-  const contentTypeDirs = entries.filter((entry) => entry.isDirectory());
-
-  const paths = contentTypeDirs.flatMap((entry) => {
-    const segments = getSlugsFromDirectory(path.join(localeDir, entry.name));
-    return segments.map((slug) => ({ contentType: entry.name, slug }));
-  });
+  const paths = getContentTypes(language).flatMap((contentType) =>
+    getMergedSlugEntries(contentType, language).map((entry) => ({
+      contentType,
+      slug: entry.segments,
+    })),
+  );
 
   return paths;
 }

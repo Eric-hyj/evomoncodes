@@ -1,0 +1,569 @@
+{
+  "site": {
+    "name": "Evomon",
+    "wikiName": "Wiki de Evomon",
+    "initials": "EV",
+    "shortName": "Evomon",
+    "tagline": "Wiki Comunitaria Hecha por Fans",
+    "description": "Tu guía completa de Evomon para Roblox. Sigue códigos activos, explora el catálogo de criaturas, compara iniciales, sigue rutas de evolución y domina las ventajas de tipo con guías comunitarias enfocadas.",
+    "legalNotice": "Wiki de fans no oficial. Hecha por jugadores, para jugadores."
+  },
+  "nav": {
+    "home": "Inicio",
+    "menu": "Menú",
+    "toggleTheme": "Cambiar tema",
+    "overview": "Resumen",
+    "codes": "Códigos",
+    "guide": "Guías",
+    "creatures": "Criaturas",
+    "evolution": "Evolución",
+    "islands": "Islas",
+    "type-chart": "Tabla de Tipos",
+    "shiny": "Shiny",
+    "community": "Comunidad"
+  },
+  "home": {
+    "meta": {
+      "title": "Wiki de Evomon — Códigos, Lista de Criaturas y Guía para Principiantes",
+      "description": "La Wiki de Evomon cubre códigos activos, la lista de más de 200 Evomons, guía de evolución, consejos para cazar Shiny, estrategia inicial y tutoriales para principiantes de Roblox."
+    },
+    "hero": {
+      "eyebrow": "Wiki Comunitaria Hecha por Fans",
+      "title": "Evomon",
+      "description": "Evomon es un RPG de colección de criaturas en Roblox inspirado en Pokémon, donde atrapas, entrenas y peleas con más de 200 Evomons únicos en un mundo abierto en crecimiento. Usa esta wiki para rastrear códigos activos, comparar iniciales, aprender rutas de evolución y dominar las ventajas de tipo.",
+      "stats": [
+        "Lanzado en junio de 2026",
+        "714K+ Visitas",
+        "5.8K+ Jugadores activos",
+        "5.2K+ Favoritos",
+        "200+ Evomons"
+      ],
+      "primaryCta": "Iniciar Guía para Principiantes",
+      "secondaryCta": "Ver Lista de Niveles de Iniciales",
+      "tertiaryCta": "Revisar Códigos Activos",
+      "videoLabel": "Multimedia del juego",
+      "videoAlt": "Guía de juego de Evomon",
+      "videoCloseLabel": "Cerrar",
+      "videoOpenLabel": "Abrir en YouTube"
+    },
+    "updates": {
+      "title": "Últimas Actualizaciones",
+      "browse": "Explorar Todas las Guías",
+      "viewAll": "Ver Todo",
+      "browseHref": "/guide"
+    },
+    "start": {
+      "eyebrow": "Comienza aquí",
+      "title": "Tu viaje en Evomon",
+      "cards": [
+        {
+          "number": "1",
+          "title": "Guía para principiantes",
+          "description": "Aprende el ciclo básico de Evomon: elegir tu inicial (Leafbu, Blazpu o Bubble), atrapar Evomons salvajes en combates por turnos, completar misiones de la isla y entender el sistema de Ascensión para aumentar los límites de nivel."
+        },
+        {
+          "number": "2",
+          "title": "Códigos y recompensas gratis",
+          "description": "Canjea códigos activos de Evomon para obtener Monedas gratis, Frutas de EXP medianas y Bolas avanzadas. Códigos como DCGIFTx y LIKE1GIFT otorgan miles de Monedas y objetos de EXP para impulsar tu progreso temprano."
+        },
+        {
+          "number": "3",
+          "title": "Lista de niveles iniciales",
+          "description": "Compara a Leafbu (Planta), Blazpu (Fuego) y Bubble (Agua) según ventajas de tipo, enfrentamientos contra jefes tempranos y viabilidad a largo plazo. Descubre por qué Bubble es el inicial recomendado para un progreso fluido."
+        },
+        {
+          "number": "4",
+          "title": "Guía de evolución y rango",
+          "description": "Aprende cómo las Piedras Míticas, las estadísticas de Naturaleza, los rangos de Talento (A/S/SS/SSS) y el sistema de Ascensión trabajan juntos para evolucionar a tus Evomons en potencias de final de juego con distribuciones de estadísticas optimizadas."
+        }
+      ]
+    },
+    "popular": {
+      "eyebrow": "Páginas Populares",
+      "title": "Tendencias Ahora",
+      "quickLinks": [
+        "Códigos",
+        "Lista de Niveles para Principiantes",
+        "Tabla de Tipos",
+        "Guía de Evolución"
+      ]
+    },
+    "aboutGame": {
+      "title": "¿Qué es Evomon?",
+      "paragraphs": [
+        "Evomon es un RPG coleccionista de criaturas inspirado en Pokémon en Roblox, creado por Evomon Devs, centrado en atrapar, entrenar y combatir con más de 200 criaturas únicas llamadas Evomons. El juego combina combates por turnos con exploración de mundo abierto: elige un inicial, lucha a través de islas, colecciona variantes raras Shiny y Sparkle, y monta monturas legendarias por EvoTopia.",
+        "Los jugadores exploran islas como Verdant Valley, Petal Pond y Lava Crag, cada una con tipos y jefes únicos. El sistema de evolución usa Piedras Míticas, Naturalezas y Rangos de Talento (A a SSS) para personalizar cada criatura. Los códigos son especialmente valiosos al inicio, dando Frutas EXP, Monedas y Bolas Avanzadas gratis que aceleran el progreso."
+      ],
+      "stats": [
+        {
+          "label": "Desarrollador",
+          "value": "Evomon Devs"
+        },
+        {
+          "label": "Plataforma",
+          "value": "Roblox"
+        },
+        {
+          "label": "Género",
+          "value": "RPG Coleccionista de Criaturas"
+        },
+        {
+          "label": "Visitas",
+          "value": "714K+"
+        },
+        {
+          "label": "Favoritos",
+          "value": "5.2K+"
+        },
+        {
+          "label": "Criaturas",
+          "value": "200+ Evomons"
+        },
+        {
+          "label": "Iniciales",
+          "value": "3 (Fuego/Agua/Planta)"
+        }
+      ],
+      "cta": "Explorar Todas las Guías",
+      "ctaHref": "/guide"
+    },
+    "explore": {
+      "title": "Explora las Guías de Evomon",
+      "description": "Sumérgete en los temas de Evomon que los jugadores buscan con mayor intención: códigos, comparativas de iniciales, catálogo de criaturas, rutas de evolución, progresión de islas, tabla de tipos, caza de variantes y enlaces oficiales de la comunidad.",
+      "readFullGuide": "Leer Guía Completa",
+      "modules": [
+        {
+          "order": 1,
+          "name": "Códigos de Evomon",
+          "description": "Sigue todos los códigos activos de Evomon para obtener Monedas gratis, Frutas EXP Medianas y Bolas Avanzadas. Este módulo debe ser el primer bloque de la página de inicio porque las búsquedas de códigos son el punto de entrada de mayor intención para jugadores nuevos y recurrentes que buscan recompensas gratuitas.",
+          "href": "/codes",
+          "displayType": "code-cards",
+          "highlights": [
+            {
+              "label": "DCGIFTx",
+              "detail": "10 Frutas EXP Medianas + 5 Bolas Avanzadas + 1,000 Monedas",
+              "badge": "Mejor"
+            },
+            {
+              "label": "DC2K",
+              "detail": "5 Frutas EXP Medianas",
+              "badge": "Activo"
+            },
+            {
+              "label": "FORGROUP",
+              "detail": "5 Frutas EXP Medianas",
+              "badge": "Activo"
+            },
+            {
+              "label": "EvomonVip",
+              "detail": "5 Frutas EXP Medianas",
+              "badge": "Activo"
+            },
+            {
+              "label": "LIKE1GIFT",
+              "detail": "2 Frutas EXP Medianas + 1,000 Monedas",
+              "badge": "Activo"
+            },
+            {
+              "label": "FORDC1200",
+              "detail": "1,000 Monedas",
+              "badge": "Activo"
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "Guía para Principiantes de Evomon",
+          "description": "Guía a los nuevos jugadores durante la primera hora en Evomon: elegir un inicial, completar el tutorial, explorar el Valle Verde, atrapar Evomons salvajes y entender el combate por turnos. Este módulo apunta a las búsquedas de guías para principiantes que dominan el tráfico de la semana de lanzamiento.",
+          "href": "/guide/evomon-beginner-guide",
+          "displayType": "step-by-step",
+          "highlights": [
+            {
+              "label": "1",
+              "detail": "Inicia Evomon en Roblox y habla con Ben, el NPC mentor que presenta el mundo de EvoTopia y explica las reglas básicas de captura de criaturas y combate por turnos.",
+              "badge": "Inicio"
+            },
+            {
+              "label": "2",
+              "detail": "Elige tu inicial: Leafbu (Planta), Blazpu (Fuego) o Bubble (Agua). Se recomienda Bubble porque el tipo Agua domina al jefe de tipo Roca en la Isla 1 y al Jefe Mundial de tipo Fuego más adelante.",
+              "badge": "Elegir"
+            },
+            {
+              "label": "3",
+              "detail": "Entra al Valle Verde (Isla 1) a través del portal. Combate contra Evomons salvajes en combates por turnos: debilítalos primero, luego lanza Bolas para capturarlos. Forma un equipo equilibrado de varios tipos para evitar desventajas.",
+              "badge": "Capturar"
+            },
+            {
+              "label": "4",
+              "detail": "Completa las misiones principales de Lillian en cada isla para obtener EXP de Rango y progreso de Ascensión. Reclama recompensas del Índice cada vez que atrapes una nueva especie de Evomon para obtener EXP de rango adicional.",
+              "badge": "Misión"
+            },
+            {
+              "label": "5",
+              "detail": "Alcanza el nivel 30 y completa la misión de Ascensión para aumentar tu límite de nivel. Visita la Ciudad Principal para incursiones, peleas contra jefes mundiales, desafíos diarios, la torre de habilidades y la creación de grupos para combates cooperativos.",
+              "badge": "Ascender"
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "Lista de Niveles de Iniciales de Evomon",
+          "description": "Compara los tres Evomons iniciales (Leafbu, Blazpu y Bubble) según ventaja de tipo, enfrentamientos contra jefes al inicio del juego y viabilidad a largo plazo. Este módulo apunta a búsquedas de listas de niveles y mejor inicial, que son de alto volumen para cualquier juego estilo Pokémon en su lanzamiento.",
+          "href": "/creatures/evomon-best-starter",
+          "displayType": "tier-grid",
+          "highlights": [
+            {
+              "label": "S",
+              "detail": "Bubble (Agua): domina al jefe Roca de la Isla 1, a los tipos Fuego del Peñasco de Lava (Isla 3) y al Jefe Mundial de tipo Fuego. Es claramente el mejor inicial para una progresión fluida de principio a mitad del juego.",
+              "badge": "Mejor Elección"
+            },
+            {
+              "label": "A",
+              "detail": "Blazpu (Fuego): fuerte contra tipos Planta e Insecto que se encuentran en las Islas 1 y 2. Tiene dificultades contra los tipos Agua en el Estanque de Pétalos y es bloqueado por el Jefe Mundial. Alto potencial ofensivo pero depende del enfrentamiento.",
+              "badge": "Cañón de Cristal"
+            },
+            {
+              "label": "B",
+              "detail": "Leafbu (Planta): efectivo contra tipos Agua, pero débil contra los tipos Fuego e Insecto predominantes en las primeras islas. Requiere más apoyo de equipo que Bubble o Blazpu en las primeras tres islas.",
+              "badge": "Depende del Equipo"
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "Islas y Progresión de Evomon",
+          "description": "Resume cada isla en Evomon: Valle Verde, Estanque de Pétalos, Peñasco de Lava y el centro de la Ciudad Principal, con sus tipos dominantes, jefes y condiciones de desbloqueo. Este módulo apunta a búsquedas de rutas de progresión y listas de islas.",
+          "href": "/islands",
+          "displayType": "card-list",
+          "highlights": [
+            {
+              "label": "Valle Verde",
+              "detail": "Isla 1. Zona de tipo Roca y Planta. Primera área explorable después del tutorial. Cuenta con un jefe de área de tipo Roca. Ideal para subir de nivel a tu inicial hasta aproximadamente el nivel 15 antes de continuar.",
+              "badge": "Principiante"
+            },
+            {
+              "label": "Estanque de Pétalos",
+              "detail": "Isla 2. Zona de tipo Normal y Agua. Hogar de la mazmorra de EXP donde los tickets de misión diaria te permiten luchar contra enemigos del Callejón Místico para subir de nivel rápidamente. Enfrentamientos equilibrados para la mayoría de los iniciales.",
+              "badge": "Granja"
+            },
+            {
+              "label": "Peñasco de Lava",
+              "detail": "Isla 3. Zona de tipo Fuego. Bubble (inicial Agua) domina aquí. Los enemigos del área del jefe sueltan fichas de batalla que pueden canjearse por Frutas EXP Grandes (10,000 EXP cada una) en el Mercader de Intercambio.",
+              "badge": "Mitad del Juego"
+            },
+            {
+              "label": "Centro de la Ciudad Principal",
+              "detail": "Centro principal con incursiones, el Jefe Mundial de tipo Fuego, área de desafíos diarios, torre de habilidades (libros de habilidades de nivel 100) y creación de grupos para peleas cooperativas contra jefes. Se desbloquea después de completar las primeras islas.",
+              "badge": "Final del Juego"
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "Guía de Evolución de Evomon",
+          "description": "Explica cómo evolucionar a tus Evomons usando Piedras Míticas, el sistema de Ascensión que aumenta los límites de nivel, y cómo el Rango (A/S/SS/SSS) y la Naturaleza afectan las estadísticas finales de tu criatura. Este módulo captura búsquedas de evolución y mejora únicas de los juegos de colección de criaturas.",
+          "href": "/evolution/evomon-evolution-guide",
+          "displayType": "step-by-step",
+          "highlights": [
+            {
+              "label": "1",
+              "detail": "Combate contra entrenadores repartidos por las islas para ganar tanto EXP como Piedras Míticas, el material de evolución principal. Cada entrenador suelta tipos específicos de piedras según su isla y su equipo de criaturas.",
+              "badge": "Granjear Piedras"
+            },
+            {
+              "label": "2",
+              "detail": "Revisa el Rango de tu Evomon (A/S/SS/SSS) antes de evolucionar. Los rangos más altos otorgan más puntos de talento adicionales: el rango SSS concede +15 puntos de estadística adicionales. Reasigna los puntos de talento para que coincidan con el mejor tipo de ataque de tu criatura.",
+              "badge": "Verificar Rango"
+            },
+            {
+              "label": "3",
+              "detail": "Haz coincidir la Naturaleza de tu Evomon con su conjunto de movimientos. Cada Naturaleza otorga un modificador de estadística positivo y uno negativo (ej.: +Ataque, -Defensa Especial). Los atacantes físicos necesitan naturalezas que aumenten el Ataque; los atacantes especiales necesitan naturalezas de Ataque Especial.",
+              "badge": "Optimizar"
+            },
+            {
+              "label": "4",
+              "detail": "Completa la misión de Ascensión en el nivel 30 para aumentar tanto tu límite de nivel personal como el nivel máximo de tus Evomons. Cada nivel de Ascensión desbloquea opciones de evolución más fuertes y techos de estadísticas más altos.",
+              "badge": "Ascender"
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "Tabla de Efectividad de Tipos de Evomon",
+          "description": "Desglosa los 9 tipos elementales en Evomon: Fuego, Agua, Planta, Hielo, Insecto, Tierra, Roca, Sombra y Luz, con sus fortalezas y debilidades. Este módulo apunta a búsquedas de tablas de tipos y enfrentamientos, una consulta básica para juegos estilo Pokémon.",
+          "href": "/type-chart",
+          "displayType": "card-list",
+          "highlights": [
+            {
+              "label": "Agua",
+              "detail": "Fuerte contra tipos Fuego, Tierra y Roca. Tipo clave para la Isla 1 (jefe Roca), la Isla 3 (tipos Fuego) y el Jefe Mundial de Fuego. El inicial Bubble da acceso temprano a cobertura de Agua.",
+              "badge": "Nivel S"
+            },
+            {
+              "label": "Fuego",
+              "detail": "Fuerte contra tipos Planta, Insecto y Hielo. Útil en las Islas 1 y 2, pero débil en áreas con muchos tipos Agua. El inicial Blazpu proporciona ofensiva de Fuego inmediata.",
+              "badge": "Ofensivo"
+            },
+            {
+              "label": "Planta",
+              "detail": "Fuerte contra tipos Agua, Tierra y Roca. El inicial Leafbu cubre enfrentamientos contra Agua, pero tiene dificultades contra los tipos Fuego e Insecto comunes en las primeras islas.",
+              "badge": "Situacional"
+            },
+            {
+              "label": "Sombra y Luz",
+              "detail": "Sombra es súper efectivo contra Luz y otros tipos Sombra: una dinámica única de auto-contraataque. Estos tipos raros se vuelven más relevantes en incursiones y contenido de torre al final del juego.",
+              "badge": "Final del Juego"
+            }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "Caza de Evomon Brillantes y Destellantes",
+          "description": "Explica cómo funcionan las variantes Destellante y Brillante: las variantes Destellantes añaden un efecto de aura visual, las variantes Brillantes cambian la combinación de colores de la criatura y están disponibles a través del nivel premium del Pase de Batalla. Este módulo apunta a búsquedas de caza de variantes raras comunes en comunidades de coleccionistas de criaturas.",
+          "href": "/shiny/evomon-shiny-hunting",
+          "displayType": "card-list",
+          "highlights": [
+            {
+              "label": "Variantes Destellantes",
+              "detail": "Los Evomons Destellantes tienen un efecto de aura visual distintivo que los hace destacar en combate y en tu colección. Parecen ser principalmente cosméticos, pero son muy buscados por los coleccionistas por su atractivo visual único.",
+              "badge": "Cosmético"
+            },
+            {
+              "label": "Variantes Brillantes",
+              "detail": "Los Evomons Brillantes presentan combinaciones de colores alternativas y se pueden obtener a través del nivel premium del Pase de Batalla. Son más raros que las variantes Destellantes y sirven como símbolos de estatus en la comunidad de intercambio y colección.",
+              "badge": "Raro"
+            },
+            {
+              "label": "Evomons Legendarios",
+              "detail": "Las criaturas legendarias pueden montarse como corceles en el mapa del mundo abierto. Tienen condiciones de aparición únicas y se encuentran entre los hallazgos más raros del juego. Algunos legendarios están vinculados a jefes de isla específicos o a la finalización de incursiones.",
+              "badge": "Ultra Raro"
+            },
+            {
+              "label": "Consejos de Caza",
+              "detail": "Usa Bolas Avanzadas de códigos (como DCGIFTx) para mejorar las tasas de captura de variantes raras. Completa el Índice de cada nueva especie para ganar EXP de rango. Vuelve a visitar las áreas de jefes después de la Ascensión para obtener tablas de aparición de rareza más alta.",
+              "badge": "Estrategia"
+            }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "Enlaces Oficiales de Evomon",
+          "description": "Ofrece a los jugadores un lugar central para encontrar la página del juego en Roblox, el grupo de desarrolladores, el servidor de Discord y videos de juego. Este módulo apunta a búsquedas de enlaces oficiales, Discord y comunidad, evitando que los jugadores lleguen a páginas de phishing o no oficiales.",
+          "href": "/community/evomon-discord",
+          "displayType": "card-list",
+          "highlights": [
+            {
+              "label": "Juego de Roblox",
+              "detail": "Juega Evomon en la página oficial de la experiencia de Roblox de Evomon Devs. Únete a más de 714 mil visitas en la primera semana y atrapa más de 200 Evomons en un mundo en crecimiento.",
+              "badge": "Oficial"
+            },
+            {
+              "label": "Grupo de Evomon Devs",
+              "detail": "Sigue al grupo oficial de desarrolladores de Roblox para obtener actualizaciones del juego, anuncios de eventos, nuevos lanzamientos de códigos y hitos de la comunidad. El código 2K-LIKES se desbloqueó a través de la participación del grupo.",
+              "badge": "Desarrollador"
+            },
+            {
+              "label": "Servidor de Discord",
+              "detail": "Únete al servidor oficial de Discord de Evomon para recibir lanzamientos activos de códigos, canales de intercambio, torneos comunitarios, avances de actualizaciones y comentarios directos con el equipo de desarrollo.",
+              "badge": "Comunidad"
+            },
+            {
+              "label": "YouTube",
+              "detail": "Mira guías de juego de Evomon, tutoriales de canje de códigos, comparativas de iniciales y videos de progresión de islas de la comunidad para avanzar más rápido.",
+              "badge": "Medios"
+            }
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes de Evomon",
+      "description": "Respuestas rápidas para jugadores de Roblox que comienzan Evomon.",
+      "items": [
+        {
+          "question": "¿Qué es Evomon?",
+          "answer": "Evomon es un RPG de colección de criaturas inspirado en Pokémon para Roblox, creado por Evomon Devs, donde atrapas, entrenas y peleas con más de 200 Evomons únicos a través de islas, los evolucionas con Piedras Míticas y te enfrentas a jefes mundiales."
+        },
+        {
+          "question": "¿Qué inicial debería elegir en Evomon?",
+          "answer": "Bubble (Agua) es el inicial recomendado porque los ataques de tipo Agua dominan al jefe Roca en la Isla 1 (Valle Verde), a los de tipo Fuego en la Isla 3 (Risco de Lava) y al jefe mundial de tipo Fuego. Blazpu (Fuego) y Leafbu (Planta) son viables pero requieren más apoyo de equipo al principio."
+        },
+        {
+          "question": "¿Cómo canjeo códigos de Evomon?",
+          "answer": "Abre Evomon en Roblox, completa el tutorial, toma el portal al área principal, haz clic en el ícono de engranaje (arriba a la izquierda), busca la sección de Códigos, ingresa un código y presiona Aceptar. Los códigos activos dan Monedas gratis, Frutas de EXP Medianas y Bolas Avanzadas."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "¿Listo para convertirte en el Campeón de EvoTopia?",
+      "description": "Desde elegir tu primer inicial hasta conquistar a cada jefe de isla y coleccionar Shiny Legendarios, esta wiki hecha por fans te ayuda a construir el equipo Evomon definitivo, gastar recursos sabiamente y dominar cada enfrentamiento de tipos en Evomon.",
+      "primary": "Leer la Guía para Principiantes",
+      "primaryHref": "/guide",
+      "secondary": "Jugar en Roblox",
+      "secondaryHref": "official:roblox"
+    }
+  },
+  "footer": {
+    "aboutTitle": "Wiki de Evomon",
+    "about": "Wiki de Evomon es una guía independiente hecha por fans para jugadores de Roblox. Cubre códigos activos, comparativas de iniciales, rutas de evolución, tablas de tipos, progresión de islas y estrategias para cazar criaturas brillantes en Evomon.",
+    "description": "RPG gratuito de colección de criaturas inspirado en Pokémon en Roblox, creado por Evomon Devs. Atrapa más de 200 Evomon, lucha a través de islas y evoluciona tu equipo con Piedras Míticas y Ascensión.",
+    "quickLinks": "Enlaces rápidos",
+    "guides": "Guías",
+    "legal": "Legal",
+    "copyright": "2026 Wiki de Evomon. No afiliado con Evomon Devs ni Roblox.",
+    "playGame": "Jugar Evomon",
+    "officialDiscord": "Discord oficial",
+    "officialYoutube": "Videos de juego",
+    "beginnerGuide": "Guía para principiantes",
+    "unitGuides": "Guías de criaturas",
+    "tierLists": "Listas de niveles",
+    "resources": "Recursos",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio",
+    "featuredLink": {
+      "label": "Jugar Evomon",
+      "href": "official:roblox"
+    },
+    "linkGroups": [
+      {
+        "title": "Enlaces rápidos",
+        "links": [
+          {
+            "label": "Jugar Evomon",
+            "href": "official:roblox"
+          },
+          {
+            "label": "Discord oficial",
+            "href": "official:discord"
+          },
+          {
+            "label": "Videos de juego",
+            "href": "official:youtube"
+          }
+        ]
+      },
+      {
+        "title": "Guías",
+        "links": [
+          {
+            "label": "Guía para principiantes",
+            "href": "/guide"
+          },
+          {
+            "label": "Lista de niveles de iniciales",
+            "href": "/creatures"
+          },
+          {
+            "label": "Tabla de tipos",
+            "href": "/type-chart"
+          },
+          {
+            "label": "Códigos",
+            "href": "/codes"
+          },
+          {
+            "label": "Política de privacidad",
+            "href": "/privacy-policy"
+          },
+          {
+            "label": "Términos de servicio",
+            "href": "/terms-of-service"
+          }
+        ]
+      }
+    ]
+  },
+  "shared": {
+    "wikiNavigation": "Navegación de la Wiki",
+    "activeCodes": "Códigos Activos",
+    "viewAllCodes": "Ver todos los códigos",
+    "home": "Inicio",
+    "readMore": "Leer más",
+    "noGuidesAvailable": "Aún no hay guías disponibles. ¡Vuelve pronto!",
+    "tableOfContents": "Tabla de Contenidos",
+    "inThisSection": "En esta sección",
+    "relatedGuides": "Guías Relacionadas",
+    "sidebarCodes": [
+      {
+        "code": "DCGIFTx",
+        "reward": "10 Frutas EXP Medianas + 5 Bolas Avanzadas + 1,000 Monedas"
+      },
+      {
+        "code": "LIKE1GIFT",
+        "reward": "2 Frutas EXP Medianas + 1,000 Monedas"
+      }
+    ],
+    "viewAllCodesHref": "/codes"
+  },
+  "legal": {
+    "about": {
+      "title": "Acerca de",
+      "paragraphs": [
+        "Evomon Wiki es un centro de guías independiente creado por fans que cubre códigos, criaturas, evolución, islas, tablas de tipos, caza de variantes brillantes y conocimientos esenciales del juego para jugadores de Roblox.",
+        "Este sitio no está afiliado con Evomon Devs ni con Roblox. Está creado como un recurso de guía comunitaria para jugadores de Evomon."
+      ]
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "paragraphs": [
+        "Esta wiki de fans proporciona guías informativas del juego para Evomon. No solicitamos credenciales de cuenta, contraseñas de Roblox ni información de pago privada.",
+        "Los proveedores de análisis básicos, publicidad y alojamiento pueden procesar información técnica estándar como tipo de dispositivo, navegador, región aproximada y páginas visitadas.",
+        "Los enlaces externos pueden dirigir a Roblox, Discord, YouTube o recursos comunitarios. Esos servicios se rigen por sus propias políticas de privacidad."
+      ]
+    },
+    "copyright": {
+      "title": "Derechos de Autor",
+      "paragraphs": [
+        "Evomon, Roblox, los conceptos del juego, logotipos y medios relacionados pertenecen a sus respectivos propietarios.",
+        "Esta es una implementación de wiki de fans no oficial con fines educativos y de presentación de guías.",
+        "Si posee derechos sobre el contenido mostrado aquí y tiene alguna inquietud, comuníquese con el operador del sitio para su revisión."
+      ]
+    },
+    "terms": {
+      "title": "Términos de Servicio",
+      "paragraphs": [
+        "Este sitio es un centro de guías independiente creado por fans. El contenido se proporciona únicamente con fines informativos y de entretenimiento.",
+        "Los sistemas del juego, códigos, eventos y detalles de actualizaciones pueden cambiar sin previo aviso. Siempre verifique la información importante en el juego o a través de canales oficiales.",
+        "Al usar este sitio, acepta no hacer mal uso del mismo, intentar accesos no autorizados ni presentar esta wiki de fans como una propiedad oficial de Evomon Devs o Roblox."
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La guía de Evomon que buscas puede haberse movido o aún no se ha agregado.",
+    "cta": "Explorar guías para principiantes",
+    "ctaHref": "/guide"
+  },
+  "codes": {
+    "overviewTitle": "Códigos de Evomon",
+    "overviewDescription": "Códigos activos de Evomon, recompensas, consejos de canje y notas de actualización para obtener Monedas, Frutas de EXP y Bolas Avanzadas gratis."
+  },
+  "guide": {
+    "overviewTitle": "Guías de Evomon",
+    "overviewDescription": "Guías para principiantes, consejos iniciales, tutoriales de progresión y tutoriales prácticos de Evomon para nuevos jugadores."
+  },
+  "creatures": {
+    "overviewTitle": "Criaturas Evomon",
+    "overviewDescription": "Catálogo completo de criaturas Evomon con estadísticas, elementos, cadenas de evolución, ubicaciones y cómo atrapar cada especie."
+  },
+  "evolution": {
+    "overviewTitle": "Evolución de Evomon",
+    "overviewDescription": "Guías de evolución para Piedras Míticas, estadísticas de Naturaleza, clasificaciones de Talento (de A a SSS) y requisitos de Ascensión en Evomon."
+  },
+  "islands": {
+    "overviewTitle": "Islas Evomon",
+    "overviewDescription": "Guías de progresión de islas, desbloqueo de áreas, estrategias contra jefes y detalles de zonas para Valle Verde, Estanque de Pétalos, Risco de Lava y Ciudad Principal."
+  },
+  "type-chart": {
+    "overviewTitle": "Tabla de Tipos de Evomon",
+    "overviewDescription": "Gráfico de efectividad de tipos para los 9 elementos — Fuego, Agua, Planta, Hielo, Bicho, Tierra, Roca, Sombra y Luz — en Evomon."
+  },
+  "shiny": {
+    "overviewTitle": "Caza de Evomon Shiny",
+    "overviewDescription": "Guías de caza de variantes Shiny y Sparkle, recompensas del Pase de Batalla, ubicaciones de monturas Legendarias y estrategias de apariciones raras para Evomon."
+  },
+  "community": {
+    "overviewTitle": "Comunidad de Evomon",
+    "overviewDescription": "Enlaces oficiales de la comunidad de Evomon, servidor de Discord, grupo de desarrolladores de Roblox y canales sociales."
+  }
+}

@@ -9,11 +9,11 @@ import { defineRouting } from "next-intl/routing";
  *   3. The matching JSON file in `src/locales/<locale>.json`.
  */
 export const routing = defineRouting({
-  locales: ["en", "ja"],
+  locales: ["en", "pt", "es", "ru"],
   defaultLocale: "en",
-  // English is served without a `/en` prefix (e.g. `/bosses`, `/bosses/gelum`).
+  // English is served without a locale prefix, while translated sections use their locale prefix.
   localePrefix: "as-needed",
-  localeDetection: true,
+  localeDetection: false,
 });
 
 export type Locale = (typeof routing.locales)[number];
